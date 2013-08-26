@@ -5,6 +5,9 @@ import static play.test.Helpers.fakeApplication;
 import static play.test.Helpers.inMemoryDatabase;
 import static play.test.Helpers.running;
 import static play.test.Helpers.testServer;
+import static tests.util.MyHelpers.PHAMTOMJS;
+import static tests.util.MyHelpers.running;
+import static tests.util.MyHelpers.getDesiredCapabilities;
 import org.junit.Test;
 import play.libs.F.Callback;
 import play.test.TestBrowser;
@@ -17,7 +20,7 @@ public class ViewTest {
   /** Test simple retrieval of the index page. */
   @Test
   public void testIndexPageRetrieval() {
-    running(testServer(testPort, fakeApplication(inMemoryDatabase())), HTMLUNIT, new Callback<TestBrowser>() {
+    running(testServer(testPort, fakeApplication(inMemoryDatabase())), PHAMTOMJS, getDesiredCapabilities(), new Callback<TestBrowser>() {
       @Override
       public void invoke(TestBrowser browser) {
         IndexPage indexPage = new IndexPage(browser.getDriver(), testPort, 0);
@@ -30,7 +33,7 @@ public class ViewTest {
   /** Test submission of an empty form. */
   @Test
   public void testIndexPageEmptySubmission() {
-    running(testServer(testPort, fakeApplication(inMemoryDatabase())), HTMLUNIT, new Callback<TestBrowser>() {
+    running(testServer(testPort, fakeApplication(inMemoryDatabase())), PHAMTOMJS, getDesiredCapabilities(), new Callback<TestBrowser>() {
       @Override
       public void invoke(TestBrowser browser) {
         IndexPage indexPage = new IndexPage(browser.getDriver(), testPort, 0);
@@ -45,7 +48,7 @@ public class ViewTest {
   /** Test submission of a valid form. */
   @Test
   public void testIndexPageValidSubmission() {
-    running(testServer(testPort, fakeApplication(inMemoryDatabase())), HTMLUNIT, new Callback<TestBrowser>() {
+    running(testServer(testPort, fakeApplication(inMemoryDatabase())), PHAMTOMJS, getDesiredCapabilities(), new Callback<TestBrowser>() {
       @Override
       public void invoke(TestBrowser browser) {
         IndexPage indexPage = new IndexPage(browser.getDriver(), testPort, 1);
@@ -60,7 +63,7 @@ public class ViewTest {
   /** Test submission of a manually filled out form. */
   @Test
   public void testIndexPageFormFilledSubmission() {
-    running(testServer(testPort, fakeApplication(inMemoryDatabase())), HTMLUNIT, new Callback<TestBrowser>() {
+    running(testServer(testPort, fakeApplication(inMemoryDatabase())), PHAMTOMJS, getDesiredCapabilities(), new Callback<TestBrowser>() {
       @Override
       public void invoke(TestBrowser browser) {
         IndexPage indexPage = new IndexPage(browser.getDriver(), testPort, 0);

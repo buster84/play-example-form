@@ -13,10 +13,10 @@ object ApplicationBuild extends Build {
     javaJdbc,
     javaEbean,
     "org.webjars" % "webjars-play" % "2.1.0",
+    "org.fluentlenium" % "fluentlenium-festassert" % "0.9.0" % "test" exclude("org.jboss.netty", "netty"),
+    "com.github.detro.ghostdriver" % "phantomjsdriver" % "1.0.3" % "test",
     
-    // Downgrade to JQuery 1.8.3 so that integration tests with HtmlUnit work.
-    "org.webjars" % "bootstrap" % "2.3.2" exclude("org.webjars", "jquery"),
-    "org.webjars" % "jquery" % "1.8.3"
+    "org.webjars" % "bootstrap" % "2.3.2"
   )
 
   val main = play.Project(appName, appVersion, appDependencies).settings(
